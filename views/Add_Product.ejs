@@ -1,72 +1,343 @@
 <%- include ('common/Admin_header.ejs') %>
+<div class="container-fluid add-product-wrapper py-5">
 
-<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
 
-    <div class="row mt-2">
+        <div class="col-12 col-md-10 col-lg-8 col-xl-7">
 
-         <div class="col-sm-5 offset-sm-3 p-3" style="border: 1px solid gray;">
+            <div class="card add-product-card border-0 shadow-lg">
 
-             <h1 class="text-center bg-primary p-2 text-white">Add Product</h1>
-             <form action="/add_product" method="post" enctype="multipart/form-data">
+                <!-- Header -->
+                <div class="card-header add-product-header text-white">
 
-                 <div class="mt-2">
-                     <label id="pname">Product Name</label>
-                     <input type="text" name="pname" id="pname" required class="form-control">
-                 </div>
+                    <div class="d-flex align-items-center">
 
-                 <div class="mt-2">
-                     <label id="ptype">Product Type</label>
-                     <select name="ptype" id="ptype" required class="form-control">
-                        <option selected disabled value="">Select Product Type</option>
-                        <option>Grocery</option>
-                        <option>Electronic</option>
-                        <option>Cloth</option>
-                        <option>Furniture</option>
-                     </select>
-                 </div>
+                        <div class="add-product-icon me-3">
+                            <i class="bi bi-box-seam"></i>
+                        </div>
 
-                  <div class="mt-2">
-                     <label id="pprice">Product Price</label>
-                     <input type="number" name="pprice" id="pprice" required class="form-control">
-                 </div>
+                        <div>
+                            <h2 class="mb-1">Add Product</h2>
 
-                 <div class="mt-2">
-                     <label id="pstock">No of Stock Available</label>
-                     <input type="number" name="pstock" id="pprice" required class="form-control">
-                 </div>
+                            <p class="mb-0">
+                                Add a new product to your store
+                            </p>
+                        </div>
 
-                  <div class="mt-2">
-                     <label id="pdiscount">Any Discount Offer(%)</label>
-                     <input type="number" name="pdiscount" id="pdiscount" required class="form-control">
-                 </div>
+                    </div>
 
-                  <div class="mt-2">
-                     <label id="pphoto">Product Photo</label>
-                     <input type="file" name="pphoto" id="pphoto" required class="form-control">
-                 </div>
+                </div>
 
-                 <div class="mt-2">
-                     <label id="pdescription">Description</label>
-                     <textarea name="pdescription" id="pdescription" required class="form-control"></textarea>
-                 </div>
 
-                 <div class="mt-2">
-                     <input type="submit" name="button" value="Add Now"   required class="btn btn-primary">
-                 </div>
-             </form>
+                <!-- Body -->
+                <div class="card-body p-4 p-md-5">
 
-              <div class="text-center mt-1 mb-1">
-                   <% if(locals.message) {%>
-                           <h3><%=message%></h3>
-                   <%}%>
-              </div>
+                    <form
+                        action="/add_product"
+                        method="post"
+                        enctype="multipart/form-data"
+                    >
+
+                        <!-- Product Information -->
+                        <div class="section-title">
+                            <i class="bi bi-info-circle"></i>
+                            Product Information
+                        </div>
+
+                        <div class="row">
+
+                            <!-- Product Name -->
+                            <div class="col-md-7 mb-4">
+
+                                <label for="pname" class="form-label">
+                                    Product Name
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text">
+                                        <i class="bi bi-tag"></i>
+                                    </span>
+
+                                    <input
+                                        type="text"
+                                        name="pname"
+                                        id="pname"
+                                        required
+                                        class="form-control"
+                                        placeholder="Enter product name"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Product Type -->
+                            <div class="col-md-5 mb-4">
+
+                                <label for="ptype" class="form-label">
+                                    Product Type
+                                </label>
+
+                                <select
+                                    name="ptype"
+                                    id="ptype"
+                                    required
+                                    class="form-select"
+                                >
+
+                                    <option value="" selected disabled>
+                                        Select category
+                                    </option>
+
+                                    <option value="Grocery">
+                                        Grocery
+                                    </option>
+
+                                    <option value="Electronic">
+                                        Electronic
+                                    </option>
+
+                                    <option value="Cloth">
+                                        Cloth
+                                    </option>
+
+                                    <option value="Furniture">
+                                        Furniture
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Pricing -->
+                        <div class="section-title mt-2">
+                            <i class="bi bi-currency-rupee"></i>
+                            Pricing & Stock
+                        </div>
+
+                        <div class="row">
+
+                            <!-- Price -->
+                            <div class="col-md-4 mb-4">
+
+                                <label for="pprice" class="form-label">
+                                    Product Price
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text">
+                                        ₹
+                                    </span>
+
+                                    <input
+                                        type="number"
+                                        name="pprice"
+                                        id="pprice"
+                                        required
+                                        min="0"
+                                        class="form-control"
+                                        placeholder="0"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Stock -->
+                            <div class="col-md-4 mb-4">
+
+                                <label for="pstock" class="form-label">
+                                    Available Stock
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text">
+                                        <i class="bi bi-boxes"></i>
+                                    </span>
+
+                                    <input
+                                        type="number"
+                                        name="pstock"
+                                        id="pstock"
+                                        required
+                                        min="0"
+                                        class="form-control"
+                                        placeholder="0"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Discount -->
+                            <div class="col-md-4 mb-4">
+
+                                <label for="pdiscount" class="form-label">
+                                    Discount
+                                </label>
+
+                                <div class="input-group">
+
+                                    <input
+                                        type="number"
+                                        name="pdiscount"
+                                        id="pdiscount"
+                                        required
+                                        min="0"
+                                        max="100"
+                                        class="form-control"
+                                        placeholder="0"
+                                    >
+
+                                    <span class="input-group-text">
+                                        %
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Image -->
+                        <div class="section-title mt-2">
+                            <i class="bi bi-image"></i>
+                            Product Image
+                        </div>
+
+                        <div class="upload-box mb-4">
+
+                            <div class="upload-icon">
+
+                                <i class="bi bi-cloud-arrow-up"></i>
+
+                            </div>
+
+                            <h5>Upload Product Image</h5>
+
+                            <p>
+                                Choose a clear image of your product
+                            </p>
+
+                            <input
+                                type="file"
+                                name="pphoto"
+                                id="pphoto"
+                                required
+                                class="form-control"
+                                accept="image/*"
+                            >
+
+                            <small>
+                                JPG, PNG or WEBP recommended
+                            </small>
+
+                        </div>
+
+
+                        <!-- Description -->
+                        <div class="section-title mt-2">
+                            <i class="bi bi-card-text"></i>
+                            Product Description
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label
+                                for="pdescription"
+                                class="form-label"
+                            >
+                                Description
+                            </label>
+
+                            <textarea
+                                name="pdescription"
+                                id="pdescription"
+                                required
+                                class="form-control"
+                                rows="5"
+                                placeholder="Write a detailed description about your product..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <!-- Buttons -->
+                        <div class="border-top pt-4">
+
+                            <div class="row g-2">
+
+                                <div class="col-md-8">
+
+                                    <button
+                                        type="submit"
+                                        name="button"
+                                        value="Add Now"
+                                        class="btn btn-add-product w-100"
+                                    >
+
+                                        <i class="bi bi-plus-circle me-2"></i>
+
+                                        Add Product
+
+                                    </button>
+
+                                </div>
+
+
+                                <div class="col-md-4">
+
+                                    <a
+                                        href="/admin_home"
+                                        class="btn btn-cancel w-100"
+                                    >
+
+                                        <i class="bi bi-x-circle me-2"></i>
+
+                                        Cancel
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+
+                    <!-- Message -->
+
+                    <% if(locals.message) { %>
+
+                        <div class="alert alert-info mt-4 text-center">
+
+                            <i class="bi bi-info-circle me-2"></i>
+
+                            <%= message %>
+
+                        </div>
+
+                    <% } %>
+
+                </div>
+
+            </div>
 
         </div>
 
-
-
     </div>
-
 
 </div>
 

@@ -1,38 +1,191 @@
 <%- include ('common/header.ejs') %>
+<div class="admin-login-page">
 
-<div class="container mt-5">
-    <div class="row mt-5">
+    <div class="container">
+        <div class="row min-vh-100 justify-content-center align-items-center">
 
-         <div class="col-sm-5 offset-sm-3 p-3" style="border: 1px solid gray;">
+            <div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
 
-             <h1 class="text-center bg-primary p-2 text-white">Admin Panel</h1>
+                <div class="admin-login-card shadow-lg">
 
-             <form action="/admin" method="post">
-     
-                 <div class="mt-2">
-                     <label for="email">Email-Id</label>
-                     <input type="email" name="email" id="email" required class="form-control">
-                 </div>
+                    <!-- Header -->
+                    <div class="admin-login-header text-center">
 
-                  <div class="mt-2">
-                     <label for="password">Password</label>
-                     <input type="password" name="password" id="password" required class="form-control">
-                 </div>
+                        <div class="admin-icon">
+                            <i class="bi bi-shield-lock-fill"></i>
+                        </div>
 
-                 <div class="mt-2">
-                     <button class="btn btn-primary">Submit</button>
-                 </div>
-             </form>
+                        <h2>Admin Panel</h2>
 
-              <div class="mt-2 text-center">
-                       <% if(locals.message){%>
-                            <h2><%=message%></h2>
-                       <%}%>
-              </div>
-         </div>
+                        <p>
+                            Secure Administrator Login
+                        </p>
 
+                    </div>
+
+
+                    <!-- Form -->
+                    <div class="admin-login-body">
+
+                        <form action="/admin" method="post">
+
+                            <!-- Email -->
+                            <div class="mb-4">
+
+                                <label
+                                    for="email"
+                                    class="form-label fw-semibold"
+                                >
+                                    <i class="bi bi-envelope me-1"></i>
+                                    Email Address
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text">
+                                        <i class="bi bi-envelope"></i>
+                                    </span>
+
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        id="email"
+                                        required
+                                        class="form-control"
+                                        placeholder="Enter admin email"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Password -->
+                            <div class="mb-4">
+
+                                <label
+                                    for="password"
+                                    class="form-label fw-semibold"
+                                >
+                                    <i class="bi bi-lock me-1"></i>
+                                    Password
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text">
+                                        <i class="bi bi-lock"></i>
+                                    </span>
+
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        required
+                                        class="form-control"
+                                        placeholder="Enter password"
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="btn password-btn"
+                                        onclick="toggleAdminPassword()"
+                                    >
+                                        <i
+                                            class="bi bi-eye"
+                                            id="adminEyeIcon"
+                                        ></i>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Login Button -->
+                            <button
+                                type="submit"
+                                class="btn admin-login-btn w-100"
+                            >
+                                <i class="bi bi-box-arrow-in-right me-2"></i>
+                                Login to Admin Panel
+                            </button>
+
+                        </form>
+
+
+                        <!-- Message -->
+
+                        <% if(locals.message){ %>
+
+                            <div class="alert alert-danger mt-4 text-center">
+
+                                <i class="bi bi-exclamation-circle me-2"></i>
+
+                                <%= message %>
+
+                            </div>
+
+                        <% } %>
+
+
+                        <!-- Footer -->
+
+                        <div class="text-center mt-4">
+
+                            <a
+                                href="/"
+                                class="admin-back-home"
+                            >
+                                <i class="bi bi-arrow-left me-1"></i>
+                                Back to Website
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
     </div>
+
 </div>
+
+
+<script>
+
+function toggleAdminPassword() {
+
+    const password =
+        document.getElementById("password");
+
+    const icon =
+        document.getElementById("adminEyeIcon");
+
+    if (password.type === "password") {
+
+        password.type = "text";
+
+        icon.classList.remove("bi-eye");
+
+        icon.classList.add("bi-eye-slash");
+
+    } else {
+
+        password.type = "password";
+
+        icon.classList.remove("bi-eye-slash");
+
+        icon.classList.add("bi-eye");
+
+    }
+
+}
+
+</script>
 
 
 <%- include ('common/footer.ejs') %>

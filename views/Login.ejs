@@ -1,5 +1,5 @@
 <%- include ('common/header.ejs') %>
-
+<!-- 
 <div class="container mt-5">
     <div class="row mt-5">
 
@@ -32,7 +32,258 @@
          </div>
 
     </div>
+</div> -->
+
+
+
+<div class="login-page">
+
+    <div class="container">
+
+        <div class="row justify-content-center align-items-center min-vh-100">
+
+            <div class="col-12 col-sm-10 col-md-7 col-lg-5">
+
+                <div class="login-card">
+
+                    <!-- Header -->
+
+                    <div class="login-header text-center">
+
+                        <div class="login-icon">
+                            <i class="bi bi-person-lock"></i>
+                        </div>
+
+                        <h2 class="fw-bold mb-1">
+                            Login CPanel
+                        </h2>
+
+                        <p class="mb-0">
+                            Welcome back! Please login to your account.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Form -->
+
+                    <div class="login-body">
+
+                        <form action="/login" method="post">
+
+                            <!-- Email -->
+
+                            <div class="mb-4">
+
+                                <label
+                                    for="email"
+                                    class="form-label fw-semibold">
+
+                                    Email Address
+
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text">
+                                        <i class="bi bi-envelope"></i>
+                                    </span>
+
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        id="email"
+                                        required
+                                        class="form-control"
+                                        placeholder="Enter your email">
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Password -->
+
+                            <div class="mb-4">
+
+                                <div class="d-flex justify-content-between">
+
+                                    <label
+                                        for="password"
+                                        class="form-label fw-semibold">
+
+                                        Password
+
+                                    </label>
+
+                                    <a href="#" class="forgot-link">
+                                        Forgot Password?
+                                    </a>
+
+                                </div>
+
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text">
+                                        <i class="bi bi-lock"></i>
+                                    </span>
+
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        required
+                                        class="form-control"
+                                        placeholder="Enter your password">
+
+                                    <button
+                                        type="button"
+                                        class="btn password-toggle"
+                                        onclick="togglePassword()">
+
+                                        <i
+                                            class="bi bi-eye"
+                                            id="eyeIcon">
+                                        </i>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Remember Me -->
+
+                            <div class="form-check mb-4">
+
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    id="remember">
+
+                                <label
+                                    class="form-check-label"
+                                    for="remember">
+
+                                    Remember me
+
+                                </label>
+
+                            </div>
+
+
+                            <!-- Submit -->
+
+                            <button
+                                type="submit"
+                                class="btn login-btn w-100">
+
+                                <i class="bi bi-box-arrow-in-right me-2"></i>
+
+                                Login
+
+                            </button>
+
+                        </form>
+
+
+                        <!-- Message -->
+
+                        <% if(locals.message){ %>
+
+                            <div class="alert alert-danger mt-4 text-center">
+
+                                <i class="bi bi-exclamation-circle me-2"></i>
+
+                                <%= message %>
+
+                            </div>
+
+                        <% } %>
+
+
+                        <!-- Register -->
+
+                        <div class="text-center mt-4">
+
+                            <span class="text-muted">
+                                Don't have an account?
+                            </span>
+
+                            <a
+                                href="/signup"
+                                class="register-link">
+
+                                Create Account
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Back to Home -->
+
+                <div class="text-center mt-3">
+
+                    <a href="/" class="back-home">
+
+                        <i class="bi bi-arrow-left me-1"></i>
+
+                        Back to Home
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
+
+
+<!-- Password Toggle -->
+
+<script>
+
+function togglePassword() {
+
+    const password =
+        document.getElementById("password");
+
+    const eyeIcon =
+        document.getElementById("eyeIcon");
+
+
+    if (password.type === "password") {
+
+        password.type = "text";
+
+        eyeIcon.classList.remove("bi-eye");
+
+        eyeIcon.classList.add("bi-eye-slash");
+
+    } else {
+
+        password.type = "password";
+
+        eyeIcon.classList.remove("bi-eye-slash");
+
+        eyeIcon.classList.add("bi-eye");
+
+    }
+
+}
+
+</script>
 
 
 <%- include ('common/footer.ejs') %>

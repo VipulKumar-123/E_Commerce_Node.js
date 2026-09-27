@@ -1,5 +1,5 @@
 <%- include ('common/header.ejs') %>
-<div class="container mt-5 mb-5">
+<!-- <div class="container mt-5 mb-5">
     <div class="row mt-5">
 
          <div class="col-sm-5 offset-sm-3 p-3" style="border: 1px solid gray;">
@@ -63,7 +63,399 @@
          </div>
 
     </div>
+</div> -->
+
+
+
+<body class="register-body">
+
+<div class="register-wrapper">
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center min-vh-100 py-5">
+
+            <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+
+                <div class="register-card">
+
+                    <!-- Header -->
+                    <div class="register-header text-center">
+
+                        <div class="register-icon">
+                            <i class="bi bi-person-plus-fill"></i>
+                        </div>
+
+                        <h1>Create Account</h1>
+
+                        <p>
+                            Join ShopEase and start shopping with us
+                        </p>
+
+                    </div>
+
+
+                    <!-- Form -->
+                    <div class="register-content">
+
+                        <form action="/signup" method="post">
+
+                            <div class="row">
+
+                                <!-- Name -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label for="name" class="form-label">
+                                        <i class="bi bi-person me-1"></i>
+                                        Full Name
+                                    </label>
+
+                                    <div class="input-group">
+
+                                        <span class="input-group-text">
+                                            <i class="bi bi-person"></i>
+                                        </span>
+
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            id="name"
+                                            required
+                                            class="form-control"
+                                            placeholder="Enter your name"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Email -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label for="email" class="form-label">
+                                        <i class="bi bi-envelope me-1"></i>
+                                        Email Address
+                                    </label>
+
+                                    <div class="input-group">
+
+                                        <span class="input-group-text">
+                                            <i class="bi bi-envelope"></i>
+                                        </span>
+
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            id="email"
+                                            required
+                                            class="form-control"
+                                            placeholder="Enter your email"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Password -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label for="password" class="form-label">
+                                        <i class="bi bi-lock me-1"></i>
+                                        Password
+                                    </label>
+
+                                    <div class="input-group">
+
+                                        <span class="input-group-text">
+                                            <i class="bi bi-lock"></i>
+                                        </span>
+
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            id="password"
+                                            required
+                                            class="form-control"
+                                            placeholder="Create password"
+                                        >
+
+                                        <button
+                                            type="button"
+                                            class="btn password-toggle"
+                                            onclick="togglePassword()"
+                                        >
+                                            <i class="bi bi-eye" id="eyeIcon"></i>
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Mobile -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label for="mobile" class="form-label">
+                                        <i class="bi bi-phone me-1"></i>
+                                        Mobile Number
+                                    </label>
+
+                                    <div class="input-group">
+
+                                        <span class="input-group-text">
+                                            <i class="bi bi-phone"></i>
+                                        </span>
+
+                                        <input
+                                            type="tel"
+                                            name="mobile"
+                                            id="mobile"
+                                            required
+                                            class="form-control"
+                                            placeholder="Enter mobile number"
+                                            pattern="[0-9]{10}"
+                                            maxlength="10"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Gender -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label class="form-label d-block">
+                                        <i class="bi bi-gender-ambiguous me-1"></i>
+                                        Gender
+                                    </label>
+
+                                    <div class="gender-box">
+
+                                        <div class="form-check form-check-inline">
+
+                                            <input
+                                                class="form-check-input"
+                                                type="radio"
+                                                name="gender"
+                                                id="male"
+                                                value="Male"
+                                                required
+                                            >
+
+                                            <label
+                                                class="form-check-label"
+                                                for="male"
+                                            >
+                                                Male
+                                            </label>
+
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+
+                                            <input
+                                                class="form-check-input"
+                                                type="radio"
+                                                name="gender"
+                                                id="female"
+                                                value="Female"
+                                                required
+                                            >
+
+                                            <label
+                                                class="form-check-label"
+                                                for="female"
+                                            >
+                                                Female
+                                            </label>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- State -->
+                                <div class="col-md-6 mb-3">
+
+                                    <label for="state" class="form-label">
+                                        <i class="bi bi-geo-alt me-1"></i>
+                                        State
+                                    </label>
+
+                                    <select
+                                        name="state"
+                                        id="state"
+                                        required
+                                        class="form-select"
+                                    >
+
+                                        <option value="" selected disabled>
+                                            Select State
+                                        </option>
+
+                                        <option>Haryana</option>
+                                        <option>Punjab</option>
+                                        <option>Delhi</option>
+                                        <option>Himachal Pradesh</option>
+                                        <option>Uttar Pradesh</option>
+                                        <option>Rajasthan</option>
+                                        <option>Uttarakhand</option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- Address -->
+                                <div class="col-12 mb-3">
+
+                                    <label for="address" class="form-label">
+                                        <i class="bi bi-house me-1"></i>
+                                        Address
+                                    </label>
+
+                                    <textarea
+                                        name="address"
+                                        id="address"
+                                        required
+                                        class="form-control"
+                                        rows="3"
+                                        placeholder="Enter your complete address"
+                                    ></textarea>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Terms -->
+                            <div class="form-check mb-4">
+
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    id="terms"
+                                    required
+                                >
+
+                                <label
+                                    class="form-check-label"
+                                    for="terms"
+                                >
+                                    I agree to the
+                                    <a href="#">Terms & Conditions</a>
+                                    and
+                                    <a href="#">Privacy Policy</a>
+                                </label>
+
+                            </div>
+
+
+                            <!-- Submit -->
+                            <button
+                                type="submit"
+                                class="btn register-btn w-100"
+                            >
+                                <i class="bi bi-person-check-fill me-2"></i>
+                                Create Account
+                            </button>
+
+                        </form>
+
+
+                        <!-- Message -->
+
+                        <% if(locals.message){ %>
+
+                            <div class="alert alert-info mt-4 text-center">
+
+                                <i class="bi bi-info-circle me-2"></i>
+
+                                <%= message %>
+
+                            </div>
+
+                        <% } %>
+
+
+                        <!-- Login -->
+
+                        <div class="login-link text-center mt-4">
+
+                            <span>
+                                Already have an account?
+                            </span>
+
+                            <a href="/login">
+                                Login here
+                            </a>
+
+                        </div>
+
+
+                        <!-- Home -->
+
+                        <div class="text-center mt-3">
+
+                            <a href="/" class="back-home">
+                                <i class="bi bi-arrow-left me-1"></i>
+                                Back to Home
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
 </div>
+
+
+<!-- Password Toggle -->
+
+<script>
+
+function togglePassword() {
+
+    const password =
+        document.getElementById("password");
+
+    const eyeIcon =
+        document.getElementById("eyeIcon");
+
+    if (password.type === "password") {
+
+        password.type = "text";
+
+        eyeIcon.classList.remove("bi-eye");
+
+        eyeIcon.classList.add("bi-eye-slash");
+
+    } else {
+
+        password.type = "password";
+
+        eyeIcon.classList.remove("bi-eye-slash");
+
+        eyeIcon.classList.add("bi-eye");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
 
 
 <%- include ('common/footer.ejs') %>
