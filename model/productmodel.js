@@ -18,6 +18,7 @@ const delpro=(pid,callback)=>
   db.query(sql,callback)
 }
 
+
 module.exports={
     addproducts,
     view_product,
